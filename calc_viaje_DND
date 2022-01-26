@@ -1,0 +1,219 @@
+
+
+# def viajar(distancia, transporte, velocidad):
+# normal
+n_dph = 3
+# lento
+s_dph = 2
+# rápido
+f_dph = 4
+
+distancia = int(input("Distancia en millas: "))
+transporte = input("¿A pie o en montura? ")
+velocidad = input("¿Rápido, normal o lento? ")
+
+long_trip = input("¿Vas a viajar más de 8 horas al día? Para ello tendrás que hacer tiradas de salvación de CON cada cierto tiempo o ganarás puntos de cansancio.")
+if long_trip == "No":
+    if transporte == "A pie":
+        if velocidad == "Rápido":
+            tiempo = distancia / f_dph
+            if tiempo < 1:
+                print("Tardarás", round(tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás", round(tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 8:
+                print("Tardarás", round(tiempo / 8),"días en completar el viaje. 1 descanso de 8 horas incluído.")
+            else:
+                print("Tardarás", round(tiempo), "horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Normal":
+            tiempo = distancia / n_dph
+            if tiempo < 1:
+                print("Tardarás", round(tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás", round(tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 8:
+                print("Tardarás", round(tiempo / 8), "días en completar el viaje. 1 descanso de 8 horas incluído.")
+            else:
+                print("Tardarás", round(tiempo), "horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Lento":
+            tiempo = distancia / s_dph
+            if tiempo < 1:
+                print("Tardarás", round(tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás", round(tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 8:
+                print("Tardarás", round(tiempo + 8), "días en completar el viaje. 1 descanso de 8 horas incluído.")
+            else:
+                print("Tardarás", round(tiempo), "horas en completar el viaje. No incluye descansos.")
+
+    elif transporte == "Montura":
+        if velocidad == "Rápido":
+            tiempo = distancia / (f_dph * 2)
+            tiempo_ex = f_dph * 2 + (distancia - f_dph * 2 / (f_dph))
+            if tiempo < 1:
+                print("Tardarás", round(tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás", round(tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 2 and tiempo < 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás", round(tiempo + (0.5 * (tiempo / 2))), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+                elif descanso == "No":
+                    print("Tardarás", round(tiempo_ex), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+            elif tiempo > 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás", round((tiempo / 8)), "días en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+                elif descanso == "No":
+                    print("Tardarás", round(tiempo_ex / 8), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+            else:
+                print("Tardarás", round(tiempo), "horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Normal":
+            tiempo = distancia / (n_dph * 2)
+            tiempo_ex = n_dph * 2 + (distancia - n_dph * 2 / (n_dph))
+            if tiempo < 1:
+                print("Tardarás", round(tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás", round(tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 2 and tiempo < 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás", round(tiempo + (0.5 * (tiempo / 2))), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+                elif descanso == "No":
+                    print("Tardarás", round(tiempo_ex), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+            elif tiempo > 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás", round((tiempo / 8)), "días en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+                elif descanso == "No":
+                    print("Tardarás", round(((tiempo_ex + 8) / 24)), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+            else:
+                print("Tardarás", round(tiempo), "horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Lento":
+            tiempo = distancia / (s_dph) * 2
+            tiempo_ex = s_dph * 2 + (distancia - s_dph * 2 / (s_dph))
+            if tiempo < 1:
+                print("Tardarás", round(tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás", round(tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 2 and tiempo < 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás", round(tiempo + (0.5 * (tiempo / 2))), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+                elif descanso == "No":
+                    print("Tardarás", round(tiempo_ex), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+            elif tiempo > 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás", round((tiempo / 8)), "días en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+                elif descanso == "No":
+                    print("Tardarás", round(((tiempo_ex + 8) / 24)), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+            else:
+                print("Tardarás", round(tiempo), "horas en completar el viaje. No incluye descansos.")
+elif long_trip == "Sí":
+    if transporte == "A pie":
+        if velocidad == "Rápido":
+            tiempo = distancia/f_dph
+            if tiempo < 1:
+                print("Tardarás",round(tiempo*60),"minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás",round(tiempo),"hora en completar el viaje. No incluye descansos.")
+            elif tiempo >8:
+                print("Tardarás",round((tiempo+8)/24),"días en completar el viaje. 1 descanso de 8 horas incluído.")
+            else:
+                print("Tardarás",round(tiempo),"horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Normal":
+            tiempo = distancia/n_dph
+            if tiempo < 1:
+                print("Tardarás",round(tiempo*60),"minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás",round(tiempo),"hora en completar el viaje. No incluye descansos.")
+            elif tiempo >8:
+                print("Tardarás",round((tiempo+8)/24),"días en completar el viaje. 1 descanso de 8 horas incluído.")
+            else:
+                print("Tardarás",round(tiempo),"horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Lento":
+            tiempo = distancia/s_dph
+            if tiempo < 1:
+                print("Tardarás",round(tiempo*60),"minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás",round(tiempo),"hora en completar el viaje. No incluye descansos.")
+            elif tiempo >8:
+                print("Tardarás",round((tiempo+8)/24),"días en completar el viaje. 1 descanso de 8 horas incluído.")
+            else:
+                print("Tardarás",round(tiempo),"horas en completar el viaje. No incluye descansos.")
+
+    elif transporte == "Montura":
+        if velocidad == "Rápido":
+            tiempo = distancia/(f_dph*2)
+            tiempo_ex = f_dph*2+(distancia-f_dph*2/(f_dph))
+            if tiempo < 1:
+                print("Tardarás",round(tiempo*60),"minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás",round(tiempo),"hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 2 and tiempo < 8:
+                descanso = input("Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás",round(tiempo+(0.5*(tiempo/2))),"horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+                elif descanso == "No":
+                    print("Tardarás",round(tiempo_ex), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+            elif tiempo >8:
+                descanso = input("Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás",round((tiempo / 8)),"días en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+                elif descanso == "No":
+                    print("Tardarás",round(((tiempo_ex+8)/24)), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+            else:
+                print("Tardarás",round(tiempo),"horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Normal":
+            tiempo = distancia/(n_dph*2)
+            tiempo_ex = n_dph * 2 + (distancia - n_dph * 2 / (n_dph))
+            if tiempo < 1:
+                print("Tardarás",round( tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás",round( tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 2 and tiempo < 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás",round( tiempo + (0.5 * (tiempo / 2))), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+                elif descanso == "No":
+                    print("Tardarás",round( tiempo_ex), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+            elif tiempo > 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás",round((tiempo / 8)), "días en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+                elif descanso == "No":
+                    print("Tardarás",round( ((tiempo_ex + 8) / 24)), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+            else:
+                print("Tardarás",round( tiempo), "horas en completar el viaje. No incluye descansos.")
+        elif velocidad == "Lento":
+            tiempo = distancia/(s_dph)*2
+            tiempo_ex = s_dph * 2 + (distancia - s_dph * 2 / (s_dph))
+            if tiempo < 1:
+                print("Tardarás",round( tiempo * 60), "minutos en completar el viaje. No incluye descansos.")
+            elif tiempo == 1:
+                print("Tardarás",round( tiempo), "hora en completar el viaje. No incluye descansos.")
+            elif tiempo > 2 and tiempo < 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás",round( tiempo + (0.5 * (tiempo / 2))), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+                elif descanso == "No":
+                    print("Tardarás",round( tiempo_ex), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje.")
+            elif tiempo > 8:
+                descanso = input(
+                    "Ten en cuenta que cada dos horas de viaje, la montura necesita descansar media. Si no, reducirá su velocidad a la de un humanoide. ¿Vas a tomar descansos?")
+                if descanso == "Sí":
+                    print("Tardarás",round((tiempo / 8)), "días en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+                elif descanso == "No":
+                    print("Tardarás",round( ((tiempo_ex + 8) / 24)), "horas en completar el viaje. Incluye un descanso de media hora cada dos horas de viaje y 8 horas de descanso para dormir.")
+            else:
+                print("Tardarás",round( tiempo), "horas en completar el viaje. No incluye descansos.")
